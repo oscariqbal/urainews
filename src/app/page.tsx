@@ -15,9 +15,7 @@ import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -35,7 +33,7 @@ export default function Home() {
         publishedAt: string;
         source: string;
       }
-  const [result, setResult] = useState<NormalizedArticle[] | null>(null);
+  const [result, setResult] = useState<NormalizedArticle[]>([]);
   
   // State Error
   type Provider = "newsApi" | "gnews" | "mediastack";
@@ -136,7 +134,6 @@ export default function Home() {
         source: "NewsApi",
       })
     );
-
     const normalizedGNews: NormalizedArticle[] = (gNewsRes?.articles ?? []).map(
       (article: GNewsArticle) => ({
         title: article.title,
@@ -147,7 +144,6 @@ export default function Home() {
         source: "GNews",
       })
     );
-
     const normalizedMediastack: NormalizedArticle[] = (mediastackRes?.data ?? []).map(
       (article: MediastackArticle) => ({
         title: article.title,
@@ -158,8 +154,6 @@ export default function Home() {
         source: "Mediastack",
       })
     );
-
-    // Pastikan always array, tidak mungkin null
     const allArticles: NormalizedArticle[] = [
       ...normalizedNewsApi,
       ...normalizedGNews,
