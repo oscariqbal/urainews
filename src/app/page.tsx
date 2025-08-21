@@ -253,25 +253,27 @@ export default function Home() {
                     )}
                     <div className="absolute inset-0 bg-black/40 rounded-md"/>
                     <div className="relative z-10 p-6 text-white flex flex-col justify-end h-full">
-                    <a
-                      href={result[0].url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline text-sm"
-                    >
-                      <CardTitle className="text-lg md:text-xl font-bold">{result[0].title}</CardTitle>
-                      <CardContent className="p-0 mt-4">
-                        <p className="text-sm line-clamp-2">{result[0].description}</p>
-                      </CardContent>
-                      <CardFooter className="flex justify-between items-center mt-auto p-0 mt-2">
-                        <span className="text-xs text-gray-400">
-                          {new Date(result[0].publishedAt).toLocaleString()}
-                        </span>
-                        <span className="text-xs text-gray-400">
-                          {result[0].source}
-                        </span>
-                      </CardFooter>
-                    </a>
+                    {result?.length > 0 && result[0].url && (
+                      <a
+                        href={result[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-sm"
+                      >
+                        <CardTitle className="text-lg md:text-xl font-bold">{result[0].title}</CardTitle>
+                        <CardContent className="p-0 mt-4">
+                          <p className="text-sm line-clamp-2">{result[0].description}</p>
+                        </CardContent>
+                        <CardFooter className="flex justify-between items-center mt-auto p-0 mt-2">
+                          <span className="text-xs text-gray-400">
+                            {new Date(result[0].publishedAt).toLocaleString()}
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            {result[0].source}
+                          </span>
+                        </CardFooter>
+                      </a>
+                    )}
                     </div>
                   </Card>
                 <div className="flex flex-col h-[55%] md:h-full md:w-[40%] gap-2 mb-2 md:mb-4 md:mb-0">
