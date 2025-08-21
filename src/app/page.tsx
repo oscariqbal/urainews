@@ -241,14 +241,16 @@ export default function Home() {
             <>
               <div className="flex flex-col md:flex-row h-[115vh] md:h-[60vh] mb-4 md:mb-6">
                   <Card className="relative h-[45%] md:h-full md:w-[60%] mb-2 md:mr-4 md:mb-0 rounded-md">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center rounded-md"
-                      style={{
-                        backgroundImage: `url(${
-                          result[0].image ? result[0].image : "/img/urainews.jpg"
-                        })`,
-                      }}
-                    />
+                    {result?.length > 0 && result[0].image && (
+                      <div
+                        className="absolute inset-0 bg-cover bg-center rounded-md"
+                        style={{
+                          backgroundImage: `url(${
+                            result[0].image ? result[0].image : "/img/urainews.jpg"
+                          })`,
+                        }}
+                      />
+                    )}
                     <div className="absolute inset-0 bg-black/40 rounded-md"/>
                     <div className="relative z-10 p-6 text-white flex flex-col justify-end h-full">
                     <a
